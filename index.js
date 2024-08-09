@@ -1,15 +1,12 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-/* 
-    challenge: create query exactlyTime
-    in this query, convert newDate instance to string value, and return.
-*/
-
 const typeDefs = gql`
+    scalar Date
+
     # Pontos de entrada da sua API!
     type Query {
         ola: String
-        exactlyTime: String
+        exactlyTime: Date
     }
 `
 
@@ -19,7 +16,7 @@ const resolvers = {
             return 'Retorno da query Ola'
         },
         exactlyTime() {
-            return new Date().toString();
+            return new Date;
         }
     }
 }
