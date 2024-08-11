@@ -1,7 +1,27 @@
+/* 
+challenge =
+type Product {
+    name(required)
+    price(required)
+    discount
+    priceWithDiscount (resolver)
+}
+
+query:
+    highlightProduct
+*/
+
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
     scalar Date
+
+    type Product {
+        name: String!
+        price: Float!
+        discount: Float
+        priceWithDiscount: Float
+    }
 
     type User {
         # ! = required
@@ -18,10 +38,16 @@ const typeDefs = gql`
         ola: String!
         exactlyTime: Date!
         user: User
+        highlightProduct: Product
     }
 `
 
 const resolvers = {
+    Product: {
+        priceWithDiscount(payload) {
+            return payload.discount ? payload.price - (payload.price * payload.discount) : payload.price;
+        }
+    },
     User: {
         salary(payload) {
             return payload.real_salary;
@@ -42,6 +68,13 @@ const resolvers = {
                 age: 10,
                 real_salary: 123.456,
                 vip: true
+            }
+        },
+        highlightProduct() {
+            return {
+                name: "Book",
+                price: 10.50,
+                discount: 0.25,
             }
         }
     }
