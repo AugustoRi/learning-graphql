@@ -11,11 +11,14 @@
   user {
     id name email age salary vip
   },
+  users {
+  	id name email vip
+  },
+  findUser(id: 1) {
+    name vip
+  }
   highlightProduct {
     name price discount
   },
   loteryNumbers,
-  users {
-  	id name email vip
-  }
 }

@@ -39,7 +39,7 @@ const typeDefs = gql`
 
     type User {
         # ! = required
-        id: ID
+        id: Int
         name: String!
         email: String!
         age: Int
@@ -51,12 +51,14 @@ const typeDefs = gql`
     type Query {
         # [type] = arrays
         # [Int!]! = requirement return array and int type required.
+        # query(): String => compilation error
         ola: String!
         exactlyTime: Date!
         user: User
+        users: [User]
+        findUser(id: Int): User
         highlightProduct: Product
         loteryNumbers: [Int!]!
-        users: [User]
     }
 `
 
@@ -81,6 +83,13 @@ const resolvers = {
         user() {
             return users[0];
         },
+        users() {
+            return users;
+        },
+        findUser(_, args) {
+            const selectedUsers = users.filter(user => user.id === args.id);
+            return selectedUsers ? selectedUsers[0] : null
+        },
         highlightProduct() {
             return {
                 name: "Book",
@@ -93,9 +102,6 @@ const resolvers = {
             return Array(6).fill(0)
                 .map(_ => parseInt(Math.random() * (60 + 1)))
                 .sort(increasing);
-        },
-        users() {
-            return users;
         }
     }
 }
