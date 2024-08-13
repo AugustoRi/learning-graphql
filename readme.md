@@ -5,6 +5,8 @@
 - *npm start* to run this app
 
 # Query to request
+
+```json
 {
   ola,
   exactlyTime,
@@ -22,3 +24,4 @@
   },
   loteryNumbers,
 }
+```
