@@ -1,16 +1,3 @@
-/* 
-challenge =
-type Product {
-    name(required)
-    price(required)
-    discount
-    priceWithDiscount (resolver)
-}
-
-query:
-    highlightProduct
-*/
-
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
@@ -35,10 +22,13 @@ const typeDefs = gql`
 
     # Pontos de entrada da sua API!
     type Query {
+        # [type] = arrays
+        # [Int!]! = requirement return array and int type required.
         ola: String!
         exactlyTime: Date!
         user: User
         highlightProduct: Product
+        loteryNumbers: [Int!]!
     }
 `
 
@@ -76,6 +66,13 @@ const resolvers = {
                 price: 10.50,
                 discount: 0.25,
             }
+        },
+        loteryNumbers() {
+            // return [3, 7, 12, 23, 30, 77];
+            let increasing = (a, b) => a - b;
+            return Array(6).fill(0)
+                .map(_ => parseInt(Math.random() * (60 + 1)))
+                .sort(increasing);
         }
     }
 }
