@@ -6,7 +6,7 @@
 
 # Query to request
 
-```json
+```
 {
   ola,
   exactlyTime,
