@@ -1,3 +1,16 @@
+/*
+challenge = profile type
+
+Profiles Array = 'Default', 'Adm'
+
+Profile Type
+    id, name
+
+Searchs
+    - profiles
+    - profile(id)
+*/
+
 const { ApolloServer, gql } = require('apollo-server');
 
 const users = [
@@ -27,6 +40,23 @@ const users = [
     }
 ]
 
+const PROFILES_PERMISSIONS = {
+    NONE: [], ALL: ["CREATE", "READ", "UPDATE", "DELETE"]
+}
+
+const profiles = [
+    {
+        id: 1,
+        name: 'Default',
+        permissions: PROFILES_PERMISSIONS.NONE
+    },
+    {
+        id: 2,
+        name: 'Administrator',
+        permissions: PROFILES_PERMISSIONS.ALL
+    }
+]
+
 const typeDefs = gql`
     scalar Date
 
@@ -35,6 +65,12 @@ const typeDefs = gql`
         price: Float!
         discount: Float
         priceWithDiscount: Float
+    }
+
+    type Profile {
+        id: Int
+        name: String
+        permissions: [String]
     }
 
     type User {
@@ -59,6 +95,8 @@ const typeDefs = gql`
         findUser(id: Int): User
         highlightProduct: Product
         loteryNumbers: [Int!]!
+        profiles: [Profile]
+        profile(id: Int): Profile
     }
 `
 
@@ -102,6 +140,13 @@ const resolvers = {
             return Array(6).fill(0)
                 .map(_ => parseInt(Math.random() * (60 + 1)))
                 .sort(increasing);
+        },
+        profiles() {
+            return profiles;
+        },
+        profile(_, { id }) {
+            const selectedProfiles = profiles.filter(profile => profile.id === id);
+            return selectedProfiles ? selectedProfiles[0] : null
         }
     }
 }

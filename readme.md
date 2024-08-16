@@ -23,5 +23,11 @@
     name price discount
   },
   loteryNumbers,
+  profiles {
+    name permissions
+  }
+  profile(id: 2) {
+    name permissions
+  }
 }
 ```
