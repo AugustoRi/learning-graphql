@@ -29,5 +29,13 @@
   profile(id: 2) {
     name permissions
   }
+  users {
+    name
+    vip
+    profile {
+      name
+      permissions
+    }
+  }
 }
 ```
