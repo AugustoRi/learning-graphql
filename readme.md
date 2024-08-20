@@ -48,7 +48,7 @@
 }
 
 fragment userPayload on User {
-  id name email age salary vip
+  status id name email age salary vip
   profile { id name permissions }
 }
 ```

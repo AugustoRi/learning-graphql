@@ -1,0 +1,20 @@
+#import User, Profile from 'User.graphql'
+#import Product from 'Product.graphql'
+
+scalar Date
+
+# Pontos de entrada da sua API!
+type Query {
+    # [type] = arrays
+    # [Int!]! = requirement return array and int type required.
+    # query(): String => compilation error
+    ola: String!
+    exactlyTime: Date!
+    user: User
+    users: [User]
+    findUser(id: Int): User
+    highlightProduct: Product
+    loteryNumbers: [Int!]!
+    profiles: [Profile]
+    profile(id: Int): Profile
+}
