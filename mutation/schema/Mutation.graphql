@@ -1,0 +1,4 @@
+type Mutation {
+    # comma is optional
+    createUser(name: String, email: String, age: Int): User!
+}

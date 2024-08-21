@@ -2,7 +2,7 @@
 
 ```
 # Write your query or mutation here
-{
+query allQuerys {
   users {
     ...userPayload
   }
@@ -15,6 +15,16 @@
   profile(id: 2) {
     ...profilePayload
   },
+}
+
+mutation allMutations {
+  createUser(
+    name: "Ana",
+    email: "teste4@email.com",
+    age: 40
+  ) {
+  	id name email
+  }
 }
 
 fragment userPayload on User {

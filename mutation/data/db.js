@@ -1,3 +1,9 @@
+let id = 1;
+
+function nextId() {
+    return id++;
+}
+
 const PROFILES_PERMISSIONS = {
     NONE: [], ALL: ["CREATE", "READ", "UPDATE", "DELETE"]
 }
@@ -17,7 +23,7 @@ const profiles = [
 
 const users = [
     {
-        id: 1,
+        id: nextId(),
         name: "Augusto",
         email: "teste@email.com",
         age: 10,
@@ -27,7 +33,7 @@ const users = [
         status: 'ACTIVE'
     },
     {
-        id: 2,
+        id: nextId(),
         name: "João",
         email: "teste2@email.com",
         age: 12,
@@ -37,7 +43,7 @@ const users = [
         status: 'INACTIVE'
     },
     {
-        id: 3,
+        id: nextId(),
         name: "Rafaela",
         email: "teste3@email.com",
         age: 14,
@@ -48,4 +54,4 @@ const users = [
     }
 ]
 
-module.exports = { users, profiles }
+module.exports = { users, profiles, nextId }
