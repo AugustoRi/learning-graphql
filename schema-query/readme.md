@@ -32,8 +32,8 @@
   #     permissions
   #   }
   # }
-  
-	findUser(id: 3) {
+
+  findUser(id: 3) {
     ...userPayload
   }
   users {
