@@ -19,5 +19,16 @@ module.exports = {
         }
         users.push(newUser);
         return newUser;
+    },
+    deleteUser(_, { id }) {
+        let isUserExisting = users.some((user) => user.id === id);
+
+        if (!isUserExisting) {
+            throw new Error(`User with id ${id} doesn't exist! `);
+        }
+
+        let newUsers = users.filter((user) => user.id !== id);
+
+        return newUsers;
     }
 }

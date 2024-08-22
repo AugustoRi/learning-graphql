@@ -23,7 +23,10 @@ mutation allMutations {
     email: "teste4@email.com",
     age: 40
   ) {
-  	id name email
+  	...userPayload
+  }
+  deleteUser(id: 2) {
+    ...userPayload
   }
 }
 
