@@ -2,6 +2,7 @@
 
 ```
 # Write your query or mutation here
+# Write your query or mutation here
 query allQuerys {
   users {
     ...userPayload
@@ -26,6 +27,14 @@ mutation allMutations {
   	...userPayload
   }
   deleteUser(id: 2) {
+    ...userPayload
+  }
+	updateUser(
+    id: 4, 
+    name: "Ana Alterada",
+    email: "testealt@email.com",
+    age: 42
+  ) {
     ...userPayload
   }
 }
