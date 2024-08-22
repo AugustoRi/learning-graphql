@@ -3,12 +3,17 @@ const { users, nextId } = require('../data/db');
 // if consult = query, if CRUD = mutation
 
 module.exports = {
-    createUser(_, { name, email, age }) {
+    // { name, email, age }
+    createUser(_, args) {
+        let isEmailExisting = users.some((user) => user.email === args.email);
+
+        if (isEmailExisting) {
+            throw new Error('Email already exists!');
+        }
+
         let newUser = {
             id: nextId(),
-            name,
-            email,
-            age,
+            ...args,
             profile_id: 1,
             status: 'ACTIVE'
         }
