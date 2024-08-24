@@ -19,9 +19,11 @@ query allQuerys {
 
 mutation allMutations {
   createUser(
-    name: "Ana",
-    email: "teste4@email.com",
-    age: 40
+    data: {
+      name: "Ana",
+      email: "teste4@email.com",
+      age: 40
+    }
   ) {
   	...userPayload
   }
@@ -29,6 +31,7 @@ mutation allMutations {
     ...userPayload
   }
 }
+
 
 fragment userPayload on User {
   status id name email age salary vip
