@@ -27,7 +27,11 @@ mutation allMutations {
   ) {
   	...userPayload
   }
-  deleteUser(id: 2) {
+  deleteUser(
+    filter: {
+      id: 2
+    }
+  ) {
     ...userPayload
   }
 }

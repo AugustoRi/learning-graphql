@@ -26,3 +26,8 @@ input UserInput {
     email: String
     age: Int
 }
+
+input UserFilter {
+    id: Int
+    email: String
+}

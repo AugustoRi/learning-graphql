@@ -1,5 +1,5 @@
 type Mutation {
     # comma is optional
     createUser(data: UserInput!): User!
-    deleteUser(id: Int): [User]
+    deleteUser(filter: UserFilter!): [User]!
 }
