@@ -1,3 +1,6 @@
+# Challenge
+Apply UserInput to updateUser
+
 # Query to request
 
 ```
@@ -30,6 +33,18 @@ mutation allMutations {
   deleteUser(
     filter: {
       id: 2
+    }
+  ) {
+    ...userPayload
+  }
+  updateUser(
+    filter: {
+      id: 1
+    }
+    data: {
+      name: "Augusto R.",
+      email: "testando@email.com",
+      age: 12
     }
   ) {
     ...userPayload

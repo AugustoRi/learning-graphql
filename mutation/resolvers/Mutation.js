@@ -30,5 +30,28 @@ module.exports = {
         let newUsers = users.filter((user) => user.id !== filter.id);
 
         return newUsers;
+    },
+    updateUser(_, { filter, data }) {
+        let userIndex;
+
+        if (filter.id) {
+            userIndex = users.findIndex((user) => filter.id === user.id);
+        }
+
+        if (filter.email) {
+            userIndex = users.findIndex((user) => filter.email === user.email);
+        }
+
+        if (userIndex < 0) {
+            throw new Error(`User with id ${filter.id} doesn't exist!`);
+        }
+
+        let newUserPayload = {
+            ...users[userIndex],
+            ...data
+        }
+
+        users.splice(userIndex, 1, newUserPayload);
+        return users[userIndex];
     }
 }
