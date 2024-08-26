@@ -1,4 +1,4 @@
-const { users, nextId } = require('../data/db');
+const { users, nextId } = require('../../data/db');
 
 // if consult = query, if CRUD = mutation
 

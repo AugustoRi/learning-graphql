@@ -1,6 +1,3 @@
-# Challenge
-Apply UserInput to updateUser
-
 # Query to request
 
 ```
