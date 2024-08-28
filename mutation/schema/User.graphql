@@ -20,3 +20,14 @@ type User {
     profile: Profile
     status: UserStatus
 }
+
+input UserInput {
+    name: String
+    email: String
+    age: Int
+}
+
+input UserFilter {
+    id: Int
+    email: String
+}

@@ -20,13 +20,31 @@ query allQuerys {
 
 mutation allMutations {
   createUser(
-    name: "Ana",
-    email: "teste4@email.com",
-    age: 40
+    data: {
+      name: "Ana",
+      email: "teste4@email.com",
+      age: 40
+    }
   ) {
   	...userPayload
   }
-  deleteUser(id: 2) {
+  deleteUser(
+    filter: {
+      id: 2
+    }
+  ) {
+    ...userPayload
+  }
+  updateUser(
+    filter: {
+      id: 1
+    }
+    data: {
+      name: "Augusto R.",
+      email: "testando@email.com",
+      age: 12
+    }
+  ) {
     ...userPayload
   }
 	updateUser(
@@ -38,6 +56,7 @@ mutation allMutations {
     ...userPayload
   }
 }
+
 
 fragment userPayload on User {
   status id name email age salary vip
