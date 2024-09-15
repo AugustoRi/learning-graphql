@@ -1,5 +1,6 @@
-#import User, Profile from 'User.graphql'
+#import User from 'User.graphql'
 #import Mutation from 'Mutation.graphql'
+#import Profile from 'Profile.graphql'
 
 scalar Date
 

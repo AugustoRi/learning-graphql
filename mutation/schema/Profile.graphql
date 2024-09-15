@@ -1,0 +1,19 @@
+enum ProfilePermissions {
+    NONE
+    CREATE
+    READ
+    UPDATE
+    DELETE
+    ALL
+}
+
+type Profile {
+    id: Int
+    name: String
+    permissions: [ProfilePermissions!]
+}
+
+input ProfileInput {
+    name: String
+    permissions: [ProfilePermissions]
+}

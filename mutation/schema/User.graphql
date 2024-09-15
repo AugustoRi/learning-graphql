@@ -1,9 +1,3 @@
-type Profile {
-    id: Int
-    name: String
-    permissions: [String]
-}
-
 enum UserStatus {
     ACTIVE
     INACTIVE

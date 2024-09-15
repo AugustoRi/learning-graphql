@@ -4,12 +4,12 @@
 # Write your query or mutation here
 # Write your query or mutation here
 query allQuerys {
-  users {
-    ...userPayload
-  }
+	users {
+	...userPayload
+	}
 	user(id: 3) {
-    ...userPayload
-  }
+	...userPayload
+	}
   profiles {
     ...profilePayload
   },
@@ -47,16 +47,15 @@ mutation allMutations {
   ) {
     ...userPayload
   }
-	updateUser(
-    id: 4, 
-    name: "Ana Alterada",
-    email: "testealt@email.com",
-    age: 42
+  createProfile(
+    data: {
+      name: "Developer"
+      permissions: [CREATE, UPDATE, DELETE]
+    }
   ) {
-    ...userPayload
+      ...profilePayload
   }
 }
-
 
 fragment userPayload on User {
   status id name email age salary vip

@@ -4,20 +4,16 @@ function nextId() {
     return id++;
 }
 
-const PROFILES_PERMISSIONS = {
-    NONE: [], ALL: ["CREATE", "READ", "UPDATE", "DELETE"]
-}
-
 const profiles = [
     {
         id: 1,
         name: 'Administrator',
-        permissions: PROFILES_PERMISSIONS.ALL
+        permissions: ['ALL']
     },
     {
         id: 2,
         name: 'Default',
-        permissions: PROFILES_PERMISSIONS.NONE
+        permissions: ['NONE']
     },
 ]
 
