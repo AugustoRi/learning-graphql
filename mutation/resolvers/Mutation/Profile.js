@@ -14,5 +14,16 @@ module.exports = {
         }
         profiles.push(newProfile);
         return newProfile;
+    },
+    deleteProfile(_, { filter }) {
+        let isRoleExisting = profiles.some((profile) => profile.id === filter.id);
+
+        if (!isRoleExisting) {
+            throw new Error(`Profile with id ${filter.id} doesn't exist!`);
+        }
+
+        let newProfiles = profiles.filter((profile) => profile.id !== filter.id);
+
+        return newProfiles;
     }
 }

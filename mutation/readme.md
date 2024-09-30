@@ -2,7 +2,6 @@
 
 ```
 # Write your query or mutation here
-# Write your query or mutation here
 query allQuerys {
 	users {
 	...userPayload
@@ -51,6 +50,13 @@ mutation allMutations {
     data: {
       name: "Developer"
       permissions: [CREATE, UPDATE, DELETE]
+    }
+  ) {
+      ...profilePayload
+  }
+  deleteProfile(
+    filter: {
+      id: 1
     }
   ) {
       ...profilePayload

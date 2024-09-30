@@ -17,3 +17,8 @@ input ProfileInput {
     name: String
     permissions: [ProfilePermissions]
 }
+
+input ProfileFilter {
+    id: Int
+    name: String
+}
