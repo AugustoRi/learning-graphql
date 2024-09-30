@@ -5,4 +5,5 @@ type Mutation {
     updateUser(filter: UserFilter!, data: UserInput!): User!
     createProfile(data: ProfileInput!): Profile!
     deleteProfile(filter: ProfileFilter): [Profile]!
+    updateProfile(filter: ProfileFilter!, data: ProfileInput!): Profile!
 }

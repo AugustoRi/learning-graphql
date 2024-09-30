@@ -43,7 +43,7 @@ module.exports = {
         }
 
         if (userIndex < 0) {
-            throw new Error(`User with id ${filter.id} doesn't exist!`);
+            throw new Error(`User doesn't exist!`);
         }
 
         let newUserPayload = {

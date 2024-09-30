@@ -25,5 +25,28 @@ module.exports = {
         let newProfiles = profiles.filter((profile) => profile.id !== filter.id);
 
         return newProfiles;
+    },
+    updateProfile(_, { filter, data }) {
+        let profileIndex;
+
+        if (filter.id) {
+            profileIndex = profiles.findIndex((profile) => filter.id === profile.id);
+        }
+
+        if (filter.name) {
+            profileIndex = profiles.findIndex((profile) => filter.name === profile.name);
+        }
+
+        if (profileIndex < 0) {
+            throw new Error(`Profile doesn't exist!`);
+        }
+
+        let newProfilePayload = {
+            ...profiles[profileIndex],
+            ...data
+        }
+
+        profiles.splice(profileIndex, 1, newProfilePayload);
+        return profiles[profileIndex];
     }
 }

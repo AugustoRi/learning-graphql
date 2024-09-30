@@ -61,6 +61,17 @@ mutation allMutations {
   ) {
       ...profilePayload
   }
+  updateProfile(
+    filter: {
+      id: 2
+    }
+    data: {
+      name: "CEO"
+      permissions: [ALL]
+    }
+  ) {
+      ...profilePayload
+  }
 }
 
 fragment userPayload on User {
